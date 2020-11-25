@@ -7,7 +7,6 @@ export default class TopNews extends Component {
 
   componentDidMount(){
     const newsApiKey = process.env.REACT_APP_NEWS_API
-    console.log(process.env.REACT_APP_NEWS_API)
     fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`)
     .then(resp => resp.json())
     .then(payload => {

@@ -8,7 +8,8 @@ class SearchResults extends Component {
     page: 5
   }
   componentDidMount(){
-    fetch(`https://newsapi.org/v2/everything?q=${this.props.location.state}&pageSize=100&page=1&apiKey=9627afe9b6934b5e8ad65ce6af2e8ea5`)
+    const newsApiKey = process.env.REACT_APP_NEWS_API
+    fetch(`https://newsapi.org/v2/everything?q=${this.props.location.state}&pageSize=100&page=1&apiKey=${newsApiKey}`)
     .then(resp => resp.json())
     .then(results => this.setState({results: results.articles}))
   }
