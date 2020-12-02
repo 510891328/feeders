@@ -23,7 +23,7 @@ export function logoutUser(user) {
 
 };
 
-export function signupUser(newUser) {
+export function signupUser(payload) {
   return function(dispatch){
     fetch('http://localhost:3000/signup',{
       method: 'POST',
@@ -31,10 +31,10 @@ export function signupUser(newUser) {
         'content-type':'application/json',
         accepts: 'application/json'
       },
-      body:JSON.stringify({user: newUser})
+      body:JSON.stringify({user: payload})
     })
     .then(resp => resp.json())
-    .then(user => dispatch({ type: "SIGNUP", payload: user}))
+    .then(payload => dispatch({ type: "SIGNUP", payload: payload}))
   }
 }
 

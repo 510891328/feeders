@@ -10,14 +10,18 @@ class ArticleContainer extends Component {
 
   renderArticles = () => {
     return this.props.articles.map( article => {
-      return <Article article={article}/>
+      return <Article article={article} key={article.id}/>
     })
   }
+
   render(){
     return(
-      <div>
-        {this.renderArticles()}
-      </div>
+      <>
+        <h1 className="topics">Articles</h1>
+        <div className="article-container">
+          {this.renderArticles()}
+        </div>
+      </>
     )
   }
 }

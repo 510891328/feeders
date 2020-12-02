@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import BloombergSearch from './BloombergSearch'
 import GeneralSearch from './GeneralSearch'
 import NYTSearch from './NYTSearch'
 
@@ -22,10 +21,6 @@ class SearchBox extends Component {
         return(
           <GeneralSearch />
         )
-      case 'Bloomberg':
-        return(
-          <BloombergSearch />
-        )
 
       case 'NewYorkTimes':
         return(
@@ -40,11 +35,14 @@ class SearchBox extends Component {
 
   render(){
     return(
-      <div>
-        <button onClick={()=>{this.searchHandler('General')}}>GeneralSearch</button>
-        <button onClick={()=>{this.searchHandler('Bloomberg')}}>BloombergSearch</button>
-        <button onClick={()=>{this.searchHandler('NewYorkTimes')}}>NewYorkTimes</button>
-        {this.renderSearch()}
+      <div className="search-box">
+        <div className="choose-search">
+          <button onClick={()=>{this.searchHandler('General')}} className="search-tap">GeneralSearch</button>
+          <button onClick={()=>{this.searchHandler('NewYorkTimes')}} className="search-tap">NewYorkTimes</button>
+        </div>
+        <div>
+          {this.renderSearch()}
+        </div>
       </div>)
   }
 }

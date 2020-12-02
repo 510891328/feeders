@@ -6,7 +6,7 @@ export default class TopNews extends Component {
   }
 
   componentDidMount(){
-    const newsApiKey = process.env.REACT_APP_NEWS_API
+    const newsApiKey = process.env.REACT_APP_NEWS_API_SECOND
     fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`)
     .then(resp => resp.json())
     .then(payload => {
@@ -15,18 +15,19 @@ export default class TopNews extends Component {
   }
 
   renderTopNews = () => {
-    return this.state.topNews.map(news => {
-      return <News news={news} />
+    return this.state.topNews.slice(0,9).map((news, i) => {
+      return <News news={news} key={i} />
     })
   }
 
   render(){
-    console.log(this.state.topNews);
     return(
-      <>
-        <div>TopNews</div>
-        {this.renderTopNews()}
-      </>
+      <div>
+        <h1 className='topics'>TopNews</h1>
+        <div className="news-container">
+          {this.renderTopNews()}
+        </div>
+      </div>
     )
   }
 }

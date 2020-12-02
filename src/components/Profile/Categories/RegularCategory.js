@@ -18,7 +18,7 @@ class RegularCategory extends Component {
   }
 
   renderCategories = () => {
-    return this.props.categories.map(category => <Category category={category}/>)
+    return this.props.categories.map(category => <Category category={category} key={category.id}/>)
   }
 
   submitHandler = (e) => {
@@ -26,12 +26,12 @@ class RegularCategory extends Component {
     this.props.addCategories({name: this.state.category, token:this.props.user.user.jwt})
   }
   render(){
-    console.log(this.props.user.user.user.id);
-    console.log(this.props.categories)
     return(
-      <div>
-        RegularCategory
-        {this.renderCategories()}
+      <div className="categories">
+        <h2>RegularCategory</h2>
+        <div className="category-wrapper">
+          {this.renderCategories()}
+        </div>
         <form onSubmit={this.submitHandler}>
           <select onChange={this.changeHandler}>
             <option value='business'>business</option>

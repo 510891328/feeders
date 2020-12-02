@@ -2,10 +2,10 @@ import News from '../News'
 
 const ResultContainer = (props) => {
   const renderNews = () => {
-    return props.results.map(news => <News news={news} />)
+    return props.results.map((news,i) => <News news={news} key={i} />)
   }
   return(
-    <div>
+    <div className="news-container">
       {renderNews()}
     </div>
   )

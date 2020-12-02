@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { signupUser } from '../redux/action'
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 class SignUp extends Component {
   state={
@@ -31,26 +32,43 @@ class SignUp extends Component {
     }
   }
 
+  userSignUp = () => {
+    if(this.props.user.user !== null){
+      if(this.props.user.user.hasOwnProperty('message')){
+        return <div className='invalid-pass'><p>{this.props.user.user.message}</p></div>
+      }else{
+        this.props.history.push('/profile')
+      }
+    }
+  }
+
   render(){
     return (
-      <form onSubmit={this.signupHandler}>
-        <label htmlFor="name">
-          Name:<input type="type" name="name" value={this.state.name} onChange={this.changeHandler}/>
-        </label>
-        <label htmlFor="email">
-          Email:<input type="email" name="email" value={this.state.email} onChange={this.changeHandler}/>
-        </label>
-        <label htmlFor="password">
-          Password: <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
-        </label>
-        <label htmlFor="passwordConfirm">
-          Password: <input type="password" name="passwordConfirm" value={this.state.passwordConfirm} onChange={this.changeHandler}/>
-          {this.renderPasswordComfirm()}
-        </label>
-        <button>Sign Up</button>
-      </form>
+      <div className="form-wrapper">
+        <form onSubmit={this.signupHandler} className="login-form">
+          {this.userSignUp()}
+          <label htmlFor="name">
+            Name:<input type="type" name="name" value={this.state.name} onChange={this.changeHandler}/>
+          </label>
+          <label htmlFor="email">
+            Email:<input type="email" name="email" value={this.state.email} onChange={this.changeHandler}/>
+          </label>
+          <label htmlFor="password">
+            Password: <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
+          </label>
+          <label htmlFor="passwordConfirm">
+            Password: <input type="password" name="passwordConfirm" value={this.state.passwordConfirm} onChange={this.changeHandler}/>
+            {this.renderPasswordComfirm()}
+          </label>
+          <button>Sign Up</button>
+        </form>
+      </div>
     )
   }
 }
 
-export default connect(null, { signupUser })(SignUp);
+const mstp = state => {
+  return {user: state.user}
+}
+
+export default withRouter(connect(mstp, { signupUser })(SignUp));

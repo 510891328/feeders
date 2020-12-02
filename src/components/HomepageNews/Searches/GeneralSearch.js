@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 class GeneralSearch extends Component {
 
   state = {
-    value: ''
+    value: '',
+    searchBy: 'general'
   }
 
   changeHandler = (e) => {
@@ -13,20 +14,21 @@ class GeneralSearch extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.props.history);
     this.props.history.push({
         pathname: '/searchResults',
-        state: this.state.value
+        state: this.state
       })
   }
 
   render(){
     return(
-      <form onSubmit={this.submitHandler}>
-        <label>
-          General <input type='text' name='General' value={this.state.value} onChange={this.changeHandler}/>
+      <form onSubmit={this.submitHandler} className="search-form">
+        <label className="search-label">
+          <div>
+            <input type='text' name='General' value={this.state.value} onChange={this.changeHandler} placeholder="Search all"/>
+            <button type="submit">&#128269;</button>
+          </div>
         </label>
-        <button type="submit">Search</button>
       </form>
     )
   }

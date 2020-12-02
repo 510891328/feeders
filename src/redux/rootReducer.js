@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 const initialState = {
-  user: null,
+  user: {user:null},
   articles: [],
   categories: []
 }
@@ -11,6 +11,8 @@ function loginUser(state = initialState.user, action) {
       return {...state, user: action.payload}
     case 'LOGOUT':
       return {...state, user: null}
+    case 'SIGNUP':
+      return {...state, user: action.payload}
     default:
       return state
   }
@@ -24,15 +26,6 @@ function articles(state = initialState.articles, action){
       return [...state, action.payload]
     case 'DELETE_ARTICLE':
       return state.filter(article => article.id !== action.payload.id)
-    default:
-      return state
-  }
-}
-
-function signupUser(state = initialState.user, action) {
-  switch (action.type) {
-    case 'SIGNUP':
-      return {...state, user: action.payload}
     default:
       return state
   }
@@ -53,7 +46,6 @@ function categories(state = initialState.categories, action){
 
 const rootReducer = combineReducers({
   user: loginUser,
-  newUser: signupUser,
   articles: articles,
   categories: categories
 })

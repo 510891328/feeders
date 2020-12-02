@@ -5,10 +5,10 @@ const Category = (props) => {
     props.deleteCategory(props.category.id)
   }
   return(
-    <>
+    <div className="single-category">
       <div>{props.category.category}</div>
       <button onClick={deleteHandler}>X</button>
-    </>
+    </div>
   )
 }
 
