@@ -9,21 +9,12 @@ class SearchResults extends Component {
   }
 
   componentDidMount(){
-    const newYorkTimesApiKey = process.env.REACT_APP_NEW_YORK_TIMES_API
-    const newsApiKey = process.env.REACT_APP_NEWS_API
-    switch (this.props.location.state.searchBy) {
-      case 'general':
-        fetch(`https://newsapi.org/v2/everything?q=${this.props.location.state.value}&page=${this.state.page}&apiKey=${newsApiKey}`)
-        .then(resp => resp.json())
-        .then(results => this.setState({results: results.articles}))
-        break;
-      case 'NewYorkTimes':
-        fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${this.props.location.state.value}&page=${this.state.page}&api-key=${newYorkTimesApiKey}`)
-        .then(resp => resp.json())
-        .then(results => this.setState({results: results.response.docs}))
-        break;
-      default:
-        return null;
+    this.fetchResults()
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.page !== this.state.page){
+      this.fetchResults();
     }
   }
 
@@ -47,7 +38,6 @@ class SearchResults extends Component {
   }
 
   renderSearch = () => {
-    this.fetchResults()
     switch (this.props.location.state.searchBy) {
       case 'general':
         return <ResultContainer results={this.state.results} page={this.state.page}/>
@@ -116,6 +106,8 @@ class SearchResults extends Component {
 
 
   render(){
+    console.log(this.state.results);
+    console.log(this.state.page);
     return(
       <div className="news-container">
         {this.renderSearch()}
