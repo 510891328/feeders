@@ -1,7 +1,7 @@
 export function loginUser(user) {
 
   return function(dispatch){
-    fetch('http://localhost:3000/login',{
+    fetch('https://feeder-back-end.herokuapp.com/login',{
       method: 'POST',
       headers:{
         'content-type':'application/json',
@@ -25,7 +25,7 @@ export function logoutUser(user) {
 
 export function signupUser(payload) {
   return function(dispatch){
-    fetch('http://localhost:3000/signup',{
+    fetch('https://feeder-back-end.herokuapp.com/signup',{
       method: 'POST',
       headers:{
         'content-type':'application/json',
@@ -40,7 +40,7 @@ export function signupUser(payload) {
 
 export function fetchArticles(payload) {
   return function(dispatch){
-    fetch(`http://localhost:3000/user_articles/${payload.user_id}`,{
+    fetch(`https://feeder-back-end.herokuapp.com/user_articles/${payload.user_id}`,{
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -53,7 +53,7 @@ export function fetchArticles(payload) {
 
 export function addArticle(payload){
   return function(dispatch){
-    fetch('http://localhost:3000/articles', {
+    fetch('https://feeder-back-end.herokuapp.com/articles', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -69,7 +69,7 @@ export function addArticle(payload){
 
 export function deleteArticle(payload){
   return function(dispatch){
-    fetch(`http://localhost:3000/articles/${payload}`, {
+    fetch(`https://feeder-back-end.herokuapp.com/articles/${payload}`, {
       method: 'DELETE'
     })
     .then(resp => resp.json())
@@ -79,7 +79,7 @@ export function deleteArticle(payload){
 
 export function fetchCategories(payload){
   return function(dispatch){
-    fetch(`http://localhost:3000/user_categories/${payload}`, {
+    fetch(`https://feeder-back-end.herokuapp.com/user_categories/${payload}`, {
       method: 'GET',
       headers: {
         'content-type':'application/json',
@@ -93,7 +93,7 @@ export function fetchCategories(payload){
 
 export function addCategories(payload){
   return function(dispatch){
-    fetch('http://localhost:3000/user_categories', {
+    fetch('https://feeder-back-end.herokuapp.com/user_categories', {
       method: 'POST',
       headers: {
         'content-type':'application/json',
@@ -115,7 +115,7 @@ export function addCategories(payload){
 
 export function deleteCategory(payload){
   return function(dispatch){
-    fetch(`http://localhost:3000/user_categories/${payload}`, {
+    fetch(`https://feeder-back-end.herokuapp.com/user_categories/${payload}`, {
       method: 'DELETE'
     })
     .then(resp => resp.json())
