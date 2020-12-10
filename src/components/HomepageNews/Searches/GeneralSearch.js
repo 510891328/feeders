@@ -22,11 +22,11 @@ class GeneralSearch extends Component {
 
   render(){
     return(
-      <form onSubmit={this.submitHandler} className="search-form" disable>
+      <form onSubmit={this.submitHandler} className="search-form">
         <label className="search-label">
           <div>
-            <input type='text' name='General' value={this.state.value} onChange={this.changeHandler} placeholder="Search all"/>
-            <button type="submit">&#128269;</button>
+            <input type='text' name='General' value={this.state.value} onChange={this.changeHandler} placeholder="Search all" disable/>
+            <button type="submit" disable>&#128269;</button>
           </div>
         </label>
       </form>
