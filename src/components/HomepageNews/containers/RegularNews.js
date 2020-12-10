@@ -9,7 +9,7 @@ class RegularNews extends Component {
       const newsApiKey = process.env.REACT_APP_NEWS_API_SECOND
       this.props.categories.map(category => {
         if(category.category_type === "general"){
-          fetch(`http://newsapi.org/v2/top-headlines?country=us&category=${category.category}&apiKey=${newsApiKey}`)
+          fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${category.category}&apiKey=${newsApiKey}`)
           .then(resp => resp.json())
           .then(news => this.setState({[category.category]: news}))
         }
