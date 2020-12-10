@@ -31,7 +31,7 @@ class Homepage extends Component {
       <>
         <SearchBox />
 
-        <div>
+        <div className="center">
           Due to API restriction not able to give features on search all News.
           Search on New York Times working fine.
           <iframe width="853" height="480" src="https://www.youtube.com/embed/4GbD2IQmzOY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="Demo Of Feeders" allowfullscreen>Demo</iframe>
