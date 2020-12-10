@@ -6,12 +6,13 @@ export default class TopNews extends Component {
   }
 
   componentDidMount(){
-    const newsApiKey = process.env.REACT_APP_NEWS_API_SECOND
-    fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`)
-    .then(resp => resp.json())
-    .then(payload => {
-      this.setState({topNews: payload.articles})
-    })
+    // const newsApiKey = process.env.REACT_APP_NEWS_API_SECOND
+    // fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`)
+    // .then(resp => resp.json())
+    // .then(payload => {
+    //   this.setState({topNews: payload.articles})
+    // })
+    console.log('CDM');
   }
 
   renderTopNews = () => {
