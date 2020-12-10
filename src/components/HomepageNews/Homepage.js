@@ -12,7 +12,7 @@ class Homepage extends Component {
           <>
             <SearchBox />
             <TopNews />
-            <RegularNews />
+            // <RegularNews />
           </>
         )
 
