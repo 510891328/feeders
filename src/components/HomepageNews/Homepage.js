@@ -6,29 +6,30 @@ import { connect } from 'react-redux'
 
 class Homepage extends Component {
 
-  renderComponents = () => {
-      if(this.props.user.user !== null){
-        return(
-          <>
-            <SearchBox />
-            <TopNews />
-            // <RegularNews />
-          </>
-        )
-
-      }else{
-      return(
-        <>
-          <SearchBox />
-          <TopNews />
-        </>
-      )
-    }
-  }
+  // Commented out since API not working for deployment
+  // renderComponents = () => {
+  //     if(this.props.user.user !== null){
+  //       return(
+  //         <>
+  //           <SearchBox />
+  //           <TopNews />
+  //           <RegularNews />
+  //         </>
+  //       )
+  //
+  //     }else{
+  //     return(
+  //       <>
+  //         <SearchBox />
+  //         <TopNews />
+  //       </>
+  //     )
+  //   }
+  // }
   render(){
     return(
       <>
-      {this.renderComponents()}
+        <SearchBox />
       </>
     )
   }
