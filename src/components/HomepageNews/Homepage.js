@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SearchBox from './Searches/SearchBox'
-import TopNews from './containers/TopNews'
-import RegularNews from './containers/RegularNews';
+// import TopNews from './containers/TopNews'
+// import RegularNews from './containers/RegularNews';
 import { connect } from 'react-redux'
 
 class Homepage extends Component {
